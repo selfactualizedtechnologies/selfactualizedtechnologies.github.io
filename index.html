@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Self Actualized Technologies: The ZINN App, Photo Studio and Buy or Pass?</title>
+<meta name="description" content="Self Actualized Technologies makes three apps for becoming your best self: The ZINN App for the mind, Magnificent Media Photo Studio for the craft, and Buy or Pass? for the means.">
+<meta name="theme-color" content="#0b0a09">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Self Actualized Technologies">
+<meta property="og:description" content="Technology for the life you're becoming. The ZINN App, Photo Studio and Buy or Pass?">
+<meta property="og:image" content="og.jpg"><!-- DEPLOY STEP: make this the full https:// address -->
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cormorant-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="scene.css">
+<link rel="stylesheet" href="filmtype.css">
+<link rel="stylesheet" href="fx.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip the film</a>
+
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="Self Actualized Technologies, back to the top">
+    <img src="brand/sat-mark-gold.svg" alt="" width="34" height="32" loading="lazy">
+    <span>Self Actualized <b>Technologies</b></span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="#zinn">The ZINN App</a>
+    <a href="#photo-studio">Photo Studio</a>
+    <a href="#buy-or-pass">Buy or Pass?</a>
+    <a class="nav-cta" href="#apps">The apps</a>
+  </nav>
+</header>
+
+<main id="top">
+<!-- ===================== HERO: the scroll film ===================== -->
+<section class="hero" data-k-hero data-k-span="12" aria-label="Self Actualized Technologies. At dusk, a woman walks out of the Self Actualized flagship into the city, looking at her iPad as it moves from The ZINN App to Photo Studio to Buy or Pass?">
+  <div class="k-stage">
+    <video data-k-scrub data-src="assets/hero.mp4" data-src-mobile="assets/hero-m.mp4"
+           data-poster="assets/hero-poster.webp" data-poster-mobile="assets/hero-m-poster.webp"
+           data-bytes="12708646" muted playsinline></video>
+    <div class="shade" aria-hidden="true"></div>
+
+    <!-- words fixed to the film: measured surfaces in filmtrack.js -->
+    <div class="ft-layer" data-ft-layer aria-hidden="true">
+      <!-- "TECHNOLOGIES" engraved down the travertine slab beside the doors (ref frame 40) -->
+      <div data-ft="slab" data-ft-for="wide" data-ft-fade="- - 26 40">
+        <span class="ft-sign" data-ft-at="318,196,center" style="font-size:31px">T</span>
+        <span class="ft-sign" data-ft-at="318,230,center" style="font-size:31px">E</span>
+        <span class="ft-sign" data-ft-at="318,264,center" style="font-size:31px">C</span>
+        <span class="ft-sign" data-ft-at="318,298,center" style="font-size:31px">H</span>
+        <span class="ft-sign" data-ft-at="318,332,center" style="font-size:31px">N</span>
+        <span class="ft-sign" data-ft-at="318,366,center" style="font-size:31px">O</span>
+        <span class="ft-sign" data-ft-at="318,400,center" style="font-size:31px">L</span>
+        <span class="ft-sign" data-ft-at="318,434,center" style="font-size:31px">O</span>
+        <span class="ft-sign" data-ft-at="318,468,center" style="font-size:31px">G</span>
+        <span class="ft-sign" data-ft-at="318,502,center" style="font-size:31px">I</span>
+        <span class="ft-sign" data-ft-at="318,536,center" style="font-size:31px">E</span>
+        <span class="ft-sign" data-ft-at="318,570,center" style="font-size:31px">S</span>
+      </div>
+      <!-- the app names sit level on the iPad's top edge: they follow its position, size and tilt only (no perspective) -->
+      <div data-ft="ipad" data-ft-for="wide" data-ft-fade="142 154 188 198">
+        <span class="ft-num" data-ft-at="880,316" style="font-size:18px">01 · THE MIND</span>
+        <span class="ft-app" data-ft-at="876,398" style="font-size:70px">The ZINN App</span>
+        <span class="ft-tag" data-ft-at="880,446" style="font-size:36px">Peace is a practice.</span>
+      </div>
+      <div data-ft="ipad" data-ft-for="wide" data-ft-fade="209 219 250 260">
+        <span class="ft-num" data-ft-at="880,316" style="font-size:18px">02 · THE CRAFT</span>
+        <span class="ft-app" data-ft-at="876,398" style="font-size:70px">Photo Studio</span>
+        <span class="ft-tag" data-ft-at="880,446" style="font-size:36px">Your photos, made magnificent.</span>
+      </div>
+      <div data-ft="ipad" data-ft-for="wide" data-ft-fade="274 284 - -">
+        <span class="ft-num" data-ft-at="880,316" style="font-size:18px">03 · THE MEANS</span>
+        <span class="ft-app" data-ft-at="876,398" style="font-size:70px">Buy or Pass<i>?</i></span>
+        <span class="ft-tag" data-ft-at="880,446" style="font-size:36px">Resale profit before you buy.</span>
+      </div>
+    </div>
+
+    <div class="k-band band-first" data-k-band="0 0.14">
+      <p class="eyebrow">Self Actualized Technologies</p>
+      <h1 class="hero-title">Technology for the life you're <em>becoming.</em></h1>
+      <p class="hero-line">The ZINN App · Photo Studio · Buy or Pass?</p>
+    </div>
+    <div class="k-band band-app" data-k-band="0.32 0.445" data-ft-replaces>
+      <p class="eyebrow">01 · The mind</p><h2>The ZINN App</h2><p>Peace is a practice.</p>
+    </div>
+    <div class="k-band band-app" data-k-band="0.505 0.615" data-ft-replaces>
+      <p class="eyebrow">02 · The craft</p><h2>Photo Studio</h2><p>Your photos, made magnificent.</p>
+    </div>
+    <div class="k-band band-app" data-k-band="0.67 0.78" data-ft-replaces>
+      <p class="eyebrow">03 · The means</p><h2>Buy or Pass?</h2><p>Resale profit before you buy.</p>
+    </div>
+    <div class="k-band band-end" data-k-band="0.82 1">
+      <h2>Rise to the top of <em>your</em> pyramid.</h2>
+      <p>Three tools for the mind, the craft and the means, made by Self Actualized Technologies.</p>
+      <a class="btn btn-glass" href="#apps" data-fx="glass">Explore the apps
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v11m0 0-4.5-4.5M8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+    </div>
+    <div class="cue" aria-hidden="true">Scroll</div>
+  </div>
+</section>
+
+<!-- ===================== MANIFESTO ===================== -->
+<section class="manifesto on-light" id="main" aria-labelledby="why">
+  <div class="wrap">
+    <div class="grid">
+      <figure class="pyramid" aria-label="Maslow's hierarchy of needs as a pyramid, with self-actualization at the top">
+        <svg viewBox="0 0 400 410" role="img" aria-hidden="true">
+          <defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9d29a"/><stop offset=".5" stop-color="#c9a45c"/><stop offset="1" stop-color="#a9823e"/></linearGradient></defs>
+          <path class="peak" d="M200 10 L242 92 L158 92 Z"/>
+          <path class="tier" d="M158 92 L242 92 L282 170 L118 170 Z"/>
+          <path class="tier" d="M118 170 L282 170 L322 248 L78 248 Z"/>
+          <path class="tier" d="M78 248 L322 248 L362 326 L38 326 Z"/>
+          <path class="tier" d="M38 326 L362 326 L398 398 L2 398 Z"/>
+          <text class="top" x="200" y="-4" text-anchor="middle">Self-actualization</text>
+          <text x="200" y="137" text-anchor="middle">Esteem</text>
+          <text x="200" y="215" text-anchor="middle">Love &amp; belonging</text>
+          <text x="200" y="293" text-anchor="middle">Safety</text>
+          <text x="200" y="368" text-anchor="middle">Physiological</text>
+        </svg>
+      </figure>
+      <div>
+        <p class="eyebrow">Why we're called this</p>
+        <h2 class="statement" id="why" data-fx="split">At the top of Maslow's pyramid is <em>self-actualization</em>: becoming who you're meant to be.</h2>
+        <p class="lede">Self Actualized Technologies makes software for the climb. One app helps you think more clearly and set healthy boundaries. One helps you make your photographs magnificent. One helps you decide, in seconds, whether a find is worth buying to resell.</p>
+        <p class="lede">The mind, the craft and the means. Each one is a step toward the peak.</p>
+      </div>
+    </div>
+    <div class="pillars" id="apps">
+      <a class="pillar" href="#zinn"><span class="k">01 · The mind</span><h3>The ZINN App</h3><p>Self-reflection, CBT thinking reports and AI-made boundaries.</p></a>
+      <a class="pillar" href="#photo-studio"><span class="k">02 · The craft</span><h3>Photo Studio</h3><p>An AI photo editor for your Mac that explains every change.</p></a>
+      <a class="pillar" href="#buy-or-pass"><span class="k">03 · The means</span><h3>Buy or Pass?</h3><p>Your real resale profit, before you pay.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 01 THE ZINN APP ===================== -->
+<section class="chapter on-light" id="zinn" aria-labelledby="zinn-h">
+  <div class="wrap">
+    <div class="chapter-head">
+      <div class="app-icon"><img loading="lazy" src="assets/logos/zinn-app.webp" alt="The ZINN App logo" width="96" height="96"></div>
+      <div>
+        <p class="eyebrow">01 · The mind</p>
+        <h2 id="zinn-h" data-fx="split">The ZINN App</h2>
+        <p class="tagline">Peace is a practice.</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-media" data-fx="tilt">
+        <div class="fx-tilt-frame device"><img src="assets/screen-zinn-boundaries.webp" alt="The Boundaries screen in The ZINN App, showing example boundaries: Protected Evening Hours (Time), I Don't Carry Others' Moods (Emotional) and No Scrolling Before Breakfast (Digital), each with what to say and action steps" width="1600" height="1111" loading="lazy"></div>
+        <p class="caption-note">The real Boundaries screen, filled with example boundaries.</p>
+      </div>
+      <div class="chapter-copy">
+        <p class="big">A structured, reflective companion for your daily self-work, built for personal growth, emotional regulation and recovery.</p>
+        <ul class="sections-row" aria-label="The seven sections of The ZINN App">
+          <li>Beliefs</li><li>Social</li><li>Thinking</li><li class="on">Boundaries</li><li>Maslow</li><li>Awareness</li><li>Spiritual</li>
+        </ul>
+        <ul class="feature-list">
+          <li><b>Boundaries from your beliefs.</b> Pick a pro-social belief and get boundaries across ten types, each with what to say and the steps to keep it.</li>
+          <li><b>CBT thinking reports.</b> Walk from a trigger to your first thought, your feelings and a healthier replacement thought.</li>
+          <li><b>Maslow, journaling and reflection.</b> See which unmet needs may be driving you, spot monthly patterns and connect entries to scripture across major world faiths.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-gold" href="https://apps.apple.com/us/app/the-zinn-app/id6783256840" data-fx="magnet" rel="noopener">Get it on the App Store</a>
+          <a class="btn btn-line" href="https://thezinnapp.com" rel="noopener">thezinnapp.com</a>
+        </div>
+        <p class="fine">The ZINN App is an educational self-reflection tool, not a medical or mental health service. Its AI insights are for information only.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- interlude: the film's own world between chapters -->
+<section class="interlude on-dark" aria-label="A still from the film: Photo Studio on her iPad">
+  <img src="assets/still-ipad-photo-studio.webp" alt="" width="1920" height="1080" loading="lazy">
+  <blockquote><p>Clear mind. Beautiful work. <em>Smart money.</em></p></blockquote>
+</section>
+
+<!-- ===================== 02 PHOTO STUDIO ===================== -->
+<section class="chapter on-dark flip" id="photo-studio" aria-labelledby="ps-h">
+  <div class="wrap">
+    <div class="chapter-head">
+      <div class="app-icon"><img loading="lazy" src="assets/logos/magnificent-media.svg" alt="Magnificent Media logo" width="96" height="96"></div>
+      <div>
+        <p class="eyebrow">02 · The craft</p>
+        <h2 id="ps-h" data-fx="split">Photo Studio</h2>
+        <p class="tagline">Your photos, made magnificent.</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-media" data-fx="tilt">
+        <div class="fx-tilt-frame"><img src="assets/screen-photo-studio.webp" alt="Magnificent Media Photo Studio on the Mac, editing a coral dahlia with the vectorscope, tone curve and color grading wheels" width="1800" height="1125" loading="lazy"></div>
+        <p class="caption-note">Magnificent Media Photo Studio for Mac, grading a dahlia.</p>
+      </div>
+      <div class="chapter-copy">
+        <p class="big">An AI photo editor that explains every change it makes. Enhance in one tap, mask the sky or subject in one click, and export ready for every feed.</p>
+        <ul class="feature-list">
+          <li><b>Enhance that shows its work.</b> It sets the real sliders, then lists every change in plain English.</li>
+          <li><b>Looks and color like a colorist.</b> Eight house looks, three-way color grading, a tone curve per channel and a vectorscope.</li>
+          <li><b>Everything happens on your Mac.</b> Camera RAW, HEIC and JPEG, with smart masks and portrait tools.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-gold" href="https://magnificentmediaict.com/photo-studio/" data-fx="magnet" rel="noopener">Try it free for 7 days</a>
+          <a class="btn btn-line" href="https://magnificentmediaict.com/photo-studio/film/" rel="noopener">Watch the film</a>
+        </div>
+        <p class="fine">For Mac (macOS 14 or later). One payment, no subscription.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03 BUY OR PASS? ===================== -->
+<section class="chapter on-dark night" id="buy-or-pass" aria-labelledby="bop-h">
+  <div class="wrap">
+    <div class="chapter-head">
+      <div class="app-icon"><img loading="lazy" src="assets/logos/buy-or-pass.webp" alt="Buy or Pass? app icon" width="96" height="96"></div>
+      <div>
+        <p class="eyebrow">03 · The means</p>
+        <h2 id="bop-h" data-fx="split">Buy or Pass<span class="q">?</span></h2>
+        <p class="tagline">Resale profit before you buy.</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="chapter-media" data-fx="tilt">
+        <div class="fx-tilt-frame device"><img src="assets/screen-buy-or-pass.webp" alt="The Buy or Pass? website: Know what it's worth before you pay, with a BUY verdict showing the profit and the most to pay" width="1600" height="1111" loading="lazy"></div>
+        <p class="caption-note">getbuyorpass.com</p>
+      </div>
+      <div class="chapter-copy">
+        <p class="big">Snap it, check the profit, decide in seconds. Fees, shipping and sales tax are built in, so you know what you'd really keep before you pay.</p>
+        <ul class="feature-list">
+          <li><b>A clear verdict.</b> Buy or pass, with your real profit and return, by your own rules.</li>
+          <li><b>Identify with a photo.</b> The AI names the item, writes your sold-price search and drafts a listing. It never sets prices.</li>
+          <li><b>Run it like a business.</b> Hauls with a trip budget, inventory, mileage, expenses and tax-ready exports with Pro.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-gold" href="https://apps.apple.com/us/app/buy-or-pass/id6831208757" data-fx="magnet" rel="noopener">Get it on the App Store</a>
+          <a class="btn btn-line" href="https://getbuyorpass.com" rel="noopener">getbuyorpass.com</a>
+        </div>
+        <p class="fine">Free to use, for iPhone and iPad. Pro is an optional subscription. Not affiliated with eBay Inc.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLOSING ===================== -->
+<section class="closing on-dark" aria-labelledby="close-h">
+  <img src="assets/still-avenue.webp" alt="" width="1376" height="768" loading="lazy">
+  <div class="inner">
+    <img loading="lazy" class="mark" src="brand/sat-mark-gold.svg" alt="" width="92" height="87">
+    <h2 id="close-h">Become who you're <em>meant</em> to be.</h2>
+    <p>Choose the step you're on.</p>
+    <div class="trio">
+      <a href="https://apps.apple.com/us/app/the-zinn-app/id6783256840" rel="noopener"><i class="n">01</i><span><b>The ZINN App</b><span>App Store</span></span></a>
+      <a href="https://magnificentmediaict.com/photo-studio/" rel="noopener"><i class="n">02</i><span><b>Photo Studio</b><span>For Mac</span></span></a>
+      <a href="https://apps.apple.com/us/app/buy-or-pass/id6831208757" rel="noopener"><i class="n">03</i><span><b>Buy or Pass?</b><span>App Store</span></span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="top">
+    <img loading="lazy" class="wordmark" src="brand/sat-wordmark-ivory.svg" alt="Self Actualized Technologies" width="440" height="60">
+    <nav aria-label="Footer">
+      <a href="https://thezinnapp.com" rel="noopener">The ZINN App</a>
+      <a href="https://magnificentmediaict.com/photo-studio/" rel="noopener">Photo Studio</a>
+      <a href="https://getbuyorpass.com" rel="noopener">Buy or Pass?</a>
+      <a href="#top">Back to the top</a>
+    </nav>
+  </div>
+  <div class="legal">
+    <span>© 2026 Self Actualized Technologies</span>
+    <span>App Store is a service mark of Apple Inc.</span>
+  </div>
+</footer>
+
+<script src="scene.js" defer></script>
+<script src="filmtrack.js" defer></script>
+<script src="filmtype.js" defer></script>
+<script src="fx.js" defer></script>
+<script src="site.js" defer></script>
+</body>
+</html>
