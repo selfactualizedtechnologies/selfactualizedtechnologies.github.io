@@ -38,3 +38,14 @@
   }, { passive: true });
   apply(); applyInter();
 })();
+
+/* Photo Studio bar: closing it hides it for good on this browser. */
+(() => {
+  const close = document.querySelector('.promo-close');
+  if (!close) return;
+  close.addEventListener('click', () => {
+    document.documentElement.classList.add('promo-off');
+    if (document.activeElement === close) document.querySelector('.brand')?.focus();
+    try { localStorage.setItem('sat-promo', 'closed'); } catch (e) {}
+  });
+})();
