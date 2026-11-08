@@ -8,3 +8,33 @@
   addEventListener('resize', update, { passive: true });
   update();
 })();
+
+/* Stable hero height on phones. The engine sizes the hero as span x 100vh; when a phone browser's
+   toolbar shows or hides, the viewport height changes and every section below the hero would jump by
+   span x that change (about 1000 px on an iPhone). Lock the height in pixels to the LARGE viewport,
+   measured once, and only re-measure when the width changes (rotation). */
+(() => {
+  const hero = document.querySelector('[data-k-hero]');
+  if (!hero) return;
+  const span = Number(hero.dataset.kSpan || 3);
+  const probe = document.createElement('div');
+  probe.setAttribute('aria-hidden', 'true');
+  probe.style.cssText = 'position:fixed;top:0;left:0;width:0;height:100vh;height:100lvh;visibility:hidden;pointer-events:none';
+  document.body.appendChild(probe);
+  const measure = () => Math.max(probe.offsetHeight || 0, window.innerHeight);
+  let width = window.innerWidth, H = measure();
+  const apply = () => {
+    if (hero.classList.contains('k-static')) return;            // reduced motion: the engine's own layout
+    const px = Math.round(span * H) + 'px';
+    if (hero.style.height !== px) hero.style.height = px;
+  };
+  new MutationObserver(apply).observe(hero, { attributes: true, attributeFilter: ['style', 'class'] });
+  // the interlude photo section is 86% of the screen tall: lock it the same way (small viewport)
+  const inter = document.querySelector('.interlude');
+  let small = window.innerHeight;
+  const applyInter = () => { if (inter) inter.style.height = Math.round(Math.min(0.86 * small, 900)) + 'px'; };
+  addEventListener('resize', () => {
+    if (window.innerWidth !== width) { width = window.innerWidth; H = measure(); small = window.innerHeight; apply(); applyInter(); }
+  }, { passive: true });
+  apply(); applyInter();
+})();
