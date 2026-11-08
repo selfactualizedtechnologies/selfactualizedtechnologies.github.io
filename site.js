@@ -49,3 +49,30 @@
     try { localStorage.setItem('sat-promo', 'closed'); } catch (e) {}
   });
 })();
+
+/* Still-photo fallback. If the film fails, or finishes downloading but the phone won't show it
+   (Low Power Mode can do this), the hero becomes the engine's static layout: the poster with every
+   caption stacked over it, one screen tall, instead of twelve screens of a frozen picture. */
+(() => {
+  const hero = document.querySelector('[data-k-hero]');
+  if (!hero) return;
+  const ring = hero.querySelector('.k-ring');
+  let still = false, timer = null;
+  const fallBack = () => {
+    if (hero.classList.contains('k-media-ready') && !hero.classList.contains('k-media-failed')) return;
+    still = true; clearTimeout(timer);
+    hero.classList.add('k-static', 'k-still');
+    hero.style.height = '';
+    if (ring) ring.hidden = true;
+  };
+  new MutationObserver(() => {
+    const c = hero.classList;
+    if (c.contains('k-media-failed') && !still) fallBack();
+    else if (c.contains('k-media-ready')) clearTimeout(timer);
+    // the engine re-checks its mode on rotation and would clear the static class: keep the fallback
+    if (still && !c.contains('k-static')) { c.add('k-static'); hero.style.height = ''; }
+  }).observe(hero, { attributes: true, attributeFilter: ['class'] });
+  if (ring) new MutationObserver(() => {
+    if (!timer && !still && ring.style.getPropertyValue('--k-load').trim() === '1') timer = setTimeout(fallBack, 6000);
+  }).observe(ring, { attributes: true, attributeFilter: ['style'] });
+})();

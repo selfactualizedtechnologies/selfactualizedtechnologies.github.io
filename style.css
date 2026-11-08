@@ -214,7 +214,8 @@ footer nav a:hover { opacity: 1; color: var(--gold-hi); }
 footer .legal { display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: space-between; padding-top: 26px; opacity: .6; font-size: 13px; }
 
 /* static hero (reduced motion, no film): stack the captions over the poster */
-.k-static .hero .k-band, .k-media-failed .hero .k-band { position: relative; inset: auto; transform: none; opacity: 1; visibility: visible; margin: 0 var(--gutter) 28px; }
+.hero.k-static .k-band { position: relative; inset: auto; transform: none; opacity: 1; visibility: visible; margin: 0 0 clamp(18px, 3vh, 34px); max-width: 46rem; text-align: left; }
+.hero.k-static .band-end p { margin-left: 0; }
 
 /* screen-reader-only text */
 .sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
@@ -336,3 +337,13 @@ html.promo-off .promo { transform: translateY(-100%); visibility: hidden; transi
 }
 @media (prefers-reduced-motion: reduce) { .band-end, .band-app { transition: none; } }
 @media (prefers-reduced-motion: reduce) { .promo, html.promo-off .promo, .site-header { transition: none; } }
+
+/* ---------- film loading ring: fills in gold while the film downloads ---------- */
+.hero .k-ring {
+  right: max(20px, env(safe-area-inset-right, 0px)); bottom: 24px; width: 30px; height: 30px; opacity: 1;
+  background: conic-gradient(var(--gold-hi) calc(var(--k-load, 0) * 1turn), rgb(244 237 225 / .2) 0);
+  -webkit-mask: radial-gradient(circle, transparent 58%, #000 61%); mask: radial-gradient(circle, transparent 58%, #000 61%);
+  filter: drop-shadow(0 1px 3px rgb(8 7 6 / .8));
+}
+/* still-photo fallback (site.js): when the film can't play, the captions stack over the poster */
+.hero.k-static .k-band { --k: 1 !important; }
