@@ -347,3 +347,14 @@ html.promo-off .promo { transform: translateY(-100%); visibility: hidden; transi
 }
 /* still-photo fallback (site.js): when the film can't play, the captions stack over the poster */
 .hero.k-static .k-band { --k: 1 !important; }
+
+/* ---------- film fills the whole screen on phones ----------
+   The engine sizes the stage to the small viewport (Safari toolbar shown), so once the toolbar
+   shrinks a dark strip showed under the film. Size it to the large viewport instead; the parts
+   anchored to the bottom rise by the toolbar's height so they stay clear of it when it shows.
+   On desktop both viewports are equal, so nothing changes there. */
+.hero { --tb: 0px; --tb: calc(100lvh - 100svh); }
+.hero:not(.k-static) .k-stage { height: 100lvh; }
+.hero:not(.k-static) .band-first { bottom: calc(clamp(56px, 13vh, 150px) + var(--tb)); }
+.hero:not(.k-static) .cue { bottom: calc(22px + var(--tb)); }
+.hero:not(.k-static) .k-ring { bottom: calc(24px + var(--tb)); }
