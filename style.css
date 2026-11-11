@@ -96,8 +96,6 @@ a { color: inherit; }
 .band-end p { font-family: var(--serif); font-style: italic; font-size: clamp(20px, 1.8vw, 28px); margin: 18px auto 30px; max-width: 34rem; }
 
 /* words fixed to the film (positions are in film pixels, set in index.html) */
-.ft-sign { font-family: var(--display); font-weight: 500; letter-spacing: .5em; text-transform: uppercase;
-  color: #f1d9a0; text-shadow: 0 0 18px rgb(255 214 140 / .55), 0 1px 1px rgb(60 40 10 / .8); }
 .ft-app { font-family: var(--display); color: var(--ivory); text-shadow: var(--k-tshadow); }
 .ft-app i { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--gold-hi); }
 .ft-tag { font-family: var(--serif); font-style: italic; color: var(--ivory); text-shadow: var(--k-tshadow); }
@@ -236,8 +234,6 @@ footer .legal { display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content:
 
 /* ---------- legibility over the film: sturdier optical sizes, deeper scrims ---------- */
 .hero-title, .band-app h2, .band-end h2, .ft-app { font-variation-settings: "opsz" 14; font-weight: 560; }
-.ft-sign { font-variation-settings: "opsz" 11; font-weight: 640; color: #f6dda0;
-  text-shadow: 0 1px 0 rgb(40 26 6 / .95), 0 0 2px rgb(40 26 6 / .9), 0 0 22px rgb(255 210 130 / .45); }
 .ft-num { font-weight: 600; }
 .ft-tag { font-weight: 500; }
 .hero .k-band::before { inset: -40% -18%; background: radial-gradient(closest-side, rgb(10 9 8 / .74), rgb(10 9 8 / .35) 65%, transparent); }
@@ -283,7 +279,7 @@ footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
 .ft-num { text-shadow: 0 1px 2px rgb(8 7 6 / .95), 0 0 12px rgb(8 7 6 / .85); }
 /* filmtype paints scaling captions on a canvas, which ignores font-variation-settings: use a fixed sturdy instance */
 @font-face { font-family: "Bodoni Sturdy"; src: url(fonts/bodoni-sturdy.woff2) format("woff2"); font-weight: 400 900; font-display: swap; }
-.ft-app, .ft-sign { font-family: "Bodoni Sturdy", "Bodoni Moda", serif; font-weight: 400; font-variation-settings: normal; }
+.ft-app { font-family: "Bodoni Sturdy", "Bodoni Moda", serif; font-weight: 400; font-variation-settings: normal; }
 .band-end .btn { white-space: nowrap; }
 /* interlude: the quote sits in the calm dark of her hair (upper left), clear of the iPad */
 .interlude { place-items: start start; }
