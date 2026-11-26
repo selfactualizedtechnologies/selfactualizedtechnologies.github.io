@@ -375,3 +375,9 @@ html.promo-off .promo { transform: translateY(-100%); visibility: hidden; transi
 .band-first .hero-line { text-wrap: balance; }
 @media (max-width: 720px) { .hero:not(.k-static) .band-first { bottom: calc(max(108px, 13vh) + var(--tb)); } }
 .hero:not(.k-static) .k-ring { bottom: calc(24px + var(--tb)); }
+/* phone film mirror (site.js): a canvas over the phone video that shows each frame together with the words
+   riding the iPad; it fades in with the film and goes away with it */
+.hero .k-stage > canvas.sat-mirror { pointer-events: none; }
+.k-media-ready .k-stage > canvas.sat-mirror { opacity: 1; }
+.k-media-failed .k-stage > canvas.sat-mirror,
+.k-static .k-stage > canvas.sat-mirror { display: none; }

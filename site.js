@@ -76,3 +76,36 @@
     if (!timer && !still && ring.style.getPropertyValue('--k-load').trim() === '1') timer = setTimeout(fallBack, 6000);
   }).observe(ring, { attributes: true, attributeFilter: ['style'] });
 })();
+
+/* Phone film mirror. iPhone Safari puts a new video frame on screen as soon as it is decoded, while the
+   words riding the iPad (filmtype) move on the page's next rendering pass, so on phones they trailed the
+   film by one refresh and looked bouncy. Here the phone film is copied onto a canvas over the video in the
+   same callbacks where filmtype moves the words, so each frame and its words reach the screen together.
+   Phone (portrait) clip only: the desktop film is untouched. */
+(() => {
+  const hero = document.querySelector('[data-k-hero]');
+  const video = hero && hero.querySelector('video[data-k-scrub]');
+  if (!video || !('requestVideoFrameCallback' in HTMLVideoElement.prototype)) return;
+  let canvas = null, ctx = null;
+  const draw = () => {
+    if (!ctx || video.readyState < 2) return;
+    try { ctx.drawImage(video, 0, 0, canvas.width, canvas.height); } catch (e) {}
+  };
+  const onFrame = () => { draw(); video.requestVideoFrameCallback(onFrame); };
+  const start = () => {
+    if (canvas || !(video.videoWidth > 0 && video.videoWidth < video.videoHeight)) return;
+    canvas = document.createElement('canvas');
+    canvas.className = 'k-media sat-mirror';
+    canvas.setAttribute('aria-hidden', 'true');
+    canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+    ctx = canvas.getContext('2d', { alpha: false });
+    if (!ctx) { canvas = null; return; }
+    video.after(canvas);
+    draw();
+    hero.classList.add('sat-mirror-on');
+    video.requestVideoFrameCallback(onFrame);
+  };
+  video.addEventListener('seeked', draw);
+  video.addEventListener('loadeddata', start);
+  if (video.readyState >= 2) start();
+})();
