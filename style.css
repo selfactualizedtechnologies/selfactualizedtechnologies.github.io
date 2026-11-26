@@ -241,10 +241,9 @@ footer .legal { display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content:
 .band-two { max-width: 34rem; }
 .band-two .hero-line { font-size: clamp(26px, 2.6vw, 42px); }
 
-/* the app names ride the iPad on wide screens (filmtype, data-ft-replaces). The portrait film has no
-   tracks, so on phones the HTML captions come back and carry the story. */
-.hero.ft-on [data-ft-layer][data-ft-variant="phone"] ~ .band-app[data-ft-replaces] {
-  width: auto; height: auto; margin: 0; overflow: visible; clip: auto; clip-path: none; white-space: normal; }
+/* the app names ride the iPad on wide screens and phones (filmtype, data-ft-replaces; the portrait film has
+   its own phone.ipad track since 2026-11-25). The HTML captions show only until the film is ready, and in
+   the still hero. */
 @media (max-width: 720px) {
   .band-first { left: clamp(20px, 6vw, 96px); text-align: left; }
   .band-app { top: clamp(84px, 12vh, 120px); bottom: auto; }
