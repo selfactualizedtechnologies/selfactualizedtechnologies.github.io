@@ -108,4 +108,65 @@
   video.addEventListener('seeked', draw);
   video.addEventListener('loadeddata', start);
   if (video.readyState >= 2) start();
+  // after a source swap (below) the frame callbacks may have been dropped: arm them again
+  hero.addEventListener('sat-film-swapped', () => { if (ctx) { draw(); video.requestVideoFrameCallback(onFrame); } });
+})();
+
+/* Phone film: start light, finish sharp. The engine downloads the whole film before it can move, and on a
+   first visit the full phone film (5.2 MB) left the hero frozen on the poster for seconds. The engine now
+   loads a light copy (hero-m-lite.mp4, 1.1 MB: the same 388 frames, size and timing, encoded smaller), so
+   the film moves almost at once. Then the full-quality film downloads in the background and replaces it
+   in place, at the same frame, between two seeks (never during one, or the engine would wait forever for
+   a "seeked" that the source change cancels). Phones only: desktop never has data-src-mobile-full. */
+(() => {
+  const hero = document.querySelector('[data-k-hero]');
+  const video = hero && hero.querySelector('video[data-k-scrub]');
+  const full = video && video.dataset.srcMobileFull;
+  if (!full) return;
+  let state = 'wait', url = null, idle = null;
+  const phoneClip = () => video.videoWidth > 0 && video.videoWidth < video.videoHeight;
+  // point the film at a new source; once its first frame is decoded, seek to frame t. That seek always ends
+  // in a "seeked", which also frees the engine if one of its own seeks was cut off by the source change.
+  const load = (src, t, then) => {
+    const on = () => {
+      clearTimeout(guard);
+      video.currentTime = t;
+      hero.dispatchEvent(new Event('sat-film-swapped'));
+      if (typeof hero._kick === 'function') hero._kick();   // the engine seeks on to the visitor's frame
+      then(true);
+    };
+    const guard = setTimeout(() => { video.removeEventListener('loadeddata', on); then(false); }, 5000);
+    video.addEventListener('loadeddata', on, { once: true });
+    video.preload = 'auto';
+    video.src = src;
+    video.load();                                            // as the engine does: iPhone Safari needs it
+  };
+  const swap = () => {
+    if (state !== 'have' || video.seeking) return;
+    state = 'done'; clearTimeout(idle);
+    const old = video.currentSrc || video.src, t = video.currentTime;
+    load(url, t, ok => {
+      if (ok) { try { if (old.startsWith('blob:')) URL.revokeObjectURL(old); } catch (e) {} return; }
+      // the full film did not show a frame in time: go back to the light film rather than ever freeze
+      try { URL.revokeObjectURL(url); } catch (e) {}
+      load(old, t, () => {});
+    });
+  };
+  const fetchFull = async () => {
+    if (state !== 'wait' || !phoneClip()) return;
+    state = 'loading';
+    try {
+      const res = await fetch(full);
+      if (!res.ok) throw new Error('film ' + res.status);
+      url = URL.createObjectURL(await res.blob());
+      state = 'have';
+      // swap right after the engine's next seek settles, or now if the visitor is not scrolling
+      idle = setTimeout(swap, 250);
+    } catch (e) { state = 'failed'; }  // keep the light film: it still plays every frame
+  };
+  // site.js runs after the engine, so this handler runs after the engine's own "seeked" handler
+  video.addEventListener('seeked', () => { if (state === 'have') { clearTimeout(idle); if (!video.seeking) swap(); else idle = setTimeout(swap, 250); } });
+  new MutationObserver(() => { if (hero.classList.contains('k-media-ready')) fetchFull(); })
+    .observe(hero, { attributes: true, attributeFilter: ['class'] });
+  if (hero.classList.contains('k-media-ready')) fetchFull();
 })();
